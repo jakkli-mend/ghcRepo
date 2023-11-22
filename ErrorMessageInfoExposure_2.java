@@ -33,7 +33,7 @@ public class SqlInjectionLesson6b extends AssignmentEndpoint {
         }
       } catch (SQLException sqle) {
         sqle.printStackTrace();
-        // do nothing
+        // do nothing3
       }
     } catch (Exception e) {
       e.printStackTrace();
