@@ -22,6 +22,9 @@
     "checkRunConclusionLevel": "failure",
     "severityThreshold": "high"
   },
+  "issueSettingsSAST": {
+    "issueType": "finding"
+  },
   "issueSettings": {
     "minSeverityLevel": "LOW",
     "issueType": "DEPENDENCY"
