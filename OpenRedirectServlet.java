@@ -38,7 +38,7 @@ public class OpenRedirectServlet extends DefaultLoginServlet {
             session.setAttribute("authNMsg", getErrMsg("msg.authentication.fail", locale));
             res.sendRedirect("/openredirect/login" + loginQueryString);
         } else if (authUser(userid, password)) {
-            /* Reset account lock count */
+            /* Reset account lock count11 */
             resetAccountLock(userid);
 
             session.setAttribute("authNMsg", "authenticated");
