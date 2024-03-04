@@ -23,8 +23,8 @@
     "severityThreshold": "MEDium"
   },
   "issueSettingsSAST": {
-    "minSeverityLevel": "MEDium",
-    "issueType": "repo"
+    "minSeverityLevel": "low",
+    "issueType": "finding"
   },
   "issueSettings": {
     "minSeverityLevel": "LOW",
