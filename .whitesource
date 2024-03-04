@@ -24,7 +24,7 @@
   },
   "issueSettingsSAST": {
     "minSeverityLevel": "MEDium",
-    "issueType": "REPo"
+    "issueType": "repo"
   },
   "issueSettings": {
     "minSeverityLevel": "LOW",
