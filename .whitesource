@@ -24,7 +24,7 @@
   },
   "issueSettingsSAST": {
     "minSeverityLevel": "MEDium",
-    "issueType": "FINDing"
+    "issueType": "REPo"
   },
   "issueSettings": {
     "minSeverityLevel": "LOW",
