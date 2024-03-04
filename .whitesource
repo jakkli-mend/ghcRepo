@@ -20,11 +20,11 @@
   },
   "checkRunSettingsSAST": {
     "checkRunConclusionLevel": "suCCess",
-    "severityThreshold": "hiGH"
+    "severityThreshold": "MEDium"
   },
   "issueSettingsSAST": {
-    "minSeverityLevel": "HIGh",
-    "issueType": "rePO"
+    "minSeverityLevel": "MEDium",
+    "issueType": "FINDing"
   },
   "issueSettings": {
     "minSeverityLevel": "LOW",
