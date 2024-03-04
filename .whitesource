@@ -19,12 +19,12 @@
     "useMendCheckNames": true
   },
   "checkRunSettingsSAST": {
-    "checkRunConclusionLevel": "failure",
-    "severityThreshold": "high"
+    "checkRunConclusionLevel": "suCCess",
+    "severityThreshold": "hiGH"
   },
   "issueSettingsSAST": {
-    "minSeverityLevel": "high",
-    "issueType": "finding"
+    "minSeverityLevel": "HIGh",
+    "issueType": "rePO"
   },
   "issueSettings": {
     "minSeverityLevel": "LOW",
