@@ -95,8 +95,8 @@
 -            (new File(request.getParameter("id"))).exists();
 +      String filePath = request.getParameter("id");
 +      String normalizedPath = new File(filePath).getCanonicalPath();
-+      if (!normalizedPath.startsWith(new File(expectedDirectory).getCanonicalPath())) {
-+        return ResponseEntity.badRequest().body("Error: Attempt to access file outside of the expected directory.");
++      if (!normalizedPath.startsWith(new File(BASE_DIRECTORY).getCanonicalPath())) {
++        return ResponseEntity.badRequest().body("Error: Attempt to access file outside of the base directory.");
 +      }
 +      (new File(filePath)).exists();
  
