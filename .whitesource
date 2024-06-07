@@ -24,7 +24,7 @@
   },
   "issueSettingsSAST": {
     "minSeverityLevel": "high",
-    "issueType": "finding"
+    "issueType": "repo"
   },
   "issueSettings": {
     "minSeverityLevel": "LOW",
