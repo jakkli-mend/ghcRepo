@@ -47,12 +47,11 @@
          try {
              uploadDirectory.mkdirs();
              var uploadedFile = new File(uploadDirectory, fullName);
-@@ -44,1 +46,8 @@
+@@ -44,1 +46,7 @@
 -            uploadedFile.createNewFile();
-+      String fullPath = Paths.get(uploadDirectory.getAbsolutePath(), fullName).toString();
-+      File uploadedFile = new File(fullPath);
++      var uploadedFile = new File(uploadDirectory, fullName);
 +      String normalizedPath = uploadedFile.getCanonicalPath();
-+      if (!normalizedPath.startsWith(uploadDirectory.getCanonicalPath())) {
++      if (!normalizedPath.startsWith(new File(uploadDirectory).getCanonicalPath())) {
 +        return failed(this).feedback("path-traversal-profile-invalid-path").build();
 +      }
 +      uploadedFile.createNewFile();
