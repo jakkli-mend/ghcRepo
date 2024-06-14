@@ -1,5 +1,7 @@
 package org.owasp.webgoat.lessons.pathtraversal;
 
+import java.net.URI;
+import java.io.File;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomUtils;
 import org.owasp.webgoat.container.assignments.AssignmentEndpoint;
@@ -83,19 +85,19 @@ public class ProfileUploadRetrieval extends AssignmentEndpoint {
         }
         try {
             var id = request.getParameter("id");
-            var catPicture = new File(catPicturesDirectory, (id == null ? RandomUtils.nextInt(1, 11) : id) + ".jpg");
+      var id = request.getParameter("id");
+      var catPicture = new File(catPicturesDirectory, (id == null ? RandomUtils.nextInt(1, 11) : id) + ".jpg");
+      String normalizedPath = catPicture.getCanonicalPath();
+      if (!normalizedPath.startsWith(new File(catPicturesDirectory).getCanonicalPath())) {
+        return ResponseEntity.badRequest().body("Error: Attempt to access file outside of the expected directory.");
+      }
+      if (catPicture.exists()) {
+        return ResponseEntity.ok()
+                .contentType(MediaType.parseMediaType(MediaType.IMAGE_JPEG_VALUE))
+                .location(new URI("/PathTraversal/random-picture?id=" + catPicture.getName()))
+                .body(Base64.getEncoder().encode(FileCopyUtils.copyToByteArray(catPicture)));
+      }
 
-            if (catPicture.getName().toLowerCase().contains("path-traversal-secret.jpg")) {
-                return ResponseEntity.ok()
-                        .contentType(MediaType.parseMediaType(MediaType.IMAGE_JPEG_VALUE))
-                        .body(FileCopyUtils.copyToByteArray(catPicture));
-            }
-            if (catPicture.exists()) {
-                return ResponseEntity.ok()
-                        .contentType(MediaType.parseMediaType(MediaType.IMAGE_JPEG_VALUE))
-                        .location(new URI("/PathTraversal/random-picture?id=" + catPicture.getName()))
-                        .body(Base64.getEncoder().encode(FileCopyUtils.copyToByteArray(catPicture)));
-            }
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .location(new URI("/PathTraversal/random-picture?id=" + catPicture.getName()))
                     .body(StringUtils.arrayToCommaDelimitedString(catPicture.getParentFile().listFiles()).getBytes());
