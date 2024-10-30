@@ -58,10 +58,11 @@ public class SqlInjectionLesson4 extends AssignmentEndpoint {
         return injectableQuery(query);
     }
 
-    protected AttackResult injectableQuery(String query) {
+    // This method should not execute user-provided SQL query directly
+    // protected AttackResult injectableQuery(String query) {
         try (Connection connection = dataSource.getConnection()) {
             try (PreparedStatement statement = connection.prepareStatement(query, TYPE_SCROLL_INSENSITIVE, CONCUR_READ_ONLY)) {
-                statement.executeUpdate();
+    // statement.executeUpdate();
                 connection.commit();
                 ResultSet results = statement.executeQuery("SELECT phone from employees;");
                 connection.commit();
